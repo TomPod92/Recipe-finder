@@ -1,0 +1,108 @@
+/*------------------------------------------*/
+
+/*basic yellow color #f1c40f */
+
+/*darker yellow color #d2aa0c */
+
+/*------------------------------------------*/
+
+/*------------------------------------------*/
+
+/*               GLOBAL SETUP               */
+
+/*------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color: #fff;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+
+.container {
+    background-image: linear-gradient(rgba(59, 59, 59, 0.6), rgba(59, 59, 59, 0.6)), url(background1.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+
+}
+
+.header {
+    position: absolute;
+    top:  50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.test {
+    height: 200vh;
+}
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/*------------------------------------------*/
+
+/*                 HEADER                   */
+
+/*------------------------------------------*/
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-field {
+   
+    align-self: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px;
+}
+
+.search-field:focus {
+    outline-color: rgba(255, 255, 255, 0);
+}
+
+
+.button {
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #f1c40f;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+.icon {
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 804px) {
+    
+    .button {margin-right: 0;}
+    .search-field {margin-bottom: 10px;}
+     
+   
+
