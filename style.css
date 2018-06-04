@@ -34,7 +34,6 @@ html {
     background-size: cover;
     height: 100vh;
     position: relative;
-
 }
 
 .header {
@@ -103,6 +102,111 @@ form {
     
     .button {margin-right: 0;}
     .search-field {margin-bottom: 10px;}
-     
-   
+}
+
+
+/*------------------------------------------*/
+
+/*              RECIPES LIST                */
+
+/*------------------------------------------*/
+
+
+.recipes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(15vh, auto);
+    background-color: rgba(241, 196, 15, 0.3);
+    padding: 10px;
+}
+
+.item:link,
+.item:visited {
+    text-decoration: none;
+    color: #000;
+    background-color: rgba(238, 238, 238, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    transition: transform .2s;
+}
+
+.item:hover {
+    transform: scale(1.05);
+}
+
+
+.item:nth-last-child(odd) {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.picture {
+    flex: 3;
+    margin: 0;
+  
+}
+
+.picture img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.data {
+
+    flex: 4;
+    padding: 10px;
+}
+
+.previous-button {
+    float: left;
+    margin-left: 10%;
+}
+
+.next-button {
+    float: right;
+    margin-right: 10%;
+}
+
+/*
+.recipes-link {
+    display:flex;
+    align-content: center;
+}
+
+.recipes-link__photo {
+    flex: 1;
+    margin:0
+}
+
+.recipes-link__photo img {
+    width: 100%;
+    height: auto;
+}
+
+.recipes_link__data {
+    flex: 2;
+}
+*/
+
+
+.test {
+    height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
