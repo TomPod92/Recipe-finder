@@ -15,6 +15,8 @@
 </head>
 
 <body>
+   
+<!-------------------------------------SEARH PANEL----------------------------------------->
     <div class="container">
         <header class="header">
             <form class="form">
@@ -23,38 +25,65 @@
             </form>
         </header>
     </div>
-
+    
+<!-------------------------------FULL RECIPE AND SHOPPING LIST------------------------------>
     <section class="bottom">
-        <div class="full-recipe"></div>
-        
-        <div class="flex-container">
+        <div class="flex-container__upper">
+            <div class="full-recipe">
+                <div class="full-recipe__buttons">
+                    <span class="details">servings</span>
+                    <ion-icon name="add-circle"></ion-icon>
+                    <ion-icon name="remove-circle"></ion-icon>
+                    <span class="details">minutes</span>
+                </div>
+                
+                <figure class="full-recipe__figure">
+                    <img src="meal1.jpg" alt="Tomato" class="full-recipe__image">
+                    <h4 class="full-recipe__title">
+                        <span>Pasta with tomato cream sauce</span>
+                    </h4>
+                </figure>
+                
+                <div class="full-recipe__likes">
+                    <ion-icon name="heart-empty"></ion-icon>
+                </div>
+            </div>
+
+            <div class="shopping-list"></div>
+            <div style="clear:both;"></div>
+        </div>
+
+
+<!----------------------------------------RECIPES LIST--------------------------------------->
+
+        <div class="flex-container__lower">
             <div class="recipe">
                 <h4 class="recipe-author">The Pioneer Woman.</h4>
                 <p class="recipe-title">Pasta with Tomato ...</p>
             </div>
             
-             <div class="recipe">
+            <div class="recipe">
                 <h4 class="recipe-author">The Pioneer Woman.</h4>
                 <p class="recipe-title">Pasta with Tomato ...</p>
             </div>
-            
-             <div class="recipe">
+
+            <div class="recipe">
                 <h4 class="recipe-author">The Pioneer Woman.</h4>
                 <p class="recipe-title">Pasta with Tomato ...</p>
             </div>
-            
-             <div class="recipe">
+
+            <div class="recipe">
                 <h4 class="recipe-author">The Pioneer Woman.</h4>
                 <p class="recipe-title">Pasta with Tomato ...</p>
             </div>
-            
-             <div class="recipe">
+
+            <div class="recipe">
                 <h4 class="recipe-author">The Pioneer Woman.</h4>
                 <p class="recipe-title">Pasta with Tomato ...</p>
             </div>
             <ion-icon name="arrow-dropleft-circle" class="arrow-left"></ion-icon>
             <ion-icon name="arrow-dropright-circle" class="arrow-right"></ion-icon>
-            
+
 
         </div>
     </section>
@@ -67,59 +96,6 @@
 
 
 
-
-    <!--
-    <div class="recipes">
-        <a href="#" class="item">
-            <div class="picture"><img src="meal1.jpg" alt="test"></div>
-
-            <div class="data">
-                <h4 class="results__name">Pasta with Tomato ...</h4>
-                <p class="results__author">The Pioneer Woman</p>
-            </div>
-        </a>
-
-        <a href="#" class="item">
-            <div class="picture"><img src="meal1.jpg" alt="test"></div>
-
-            <div class="data">
-                <h4 class="results__name">Pasta with Tomato ...</h4>
-                <p class="results__author">The Pioneer Woman</p>
-            </div>
-        </a>
-
-        <a href="#" class="item">
-            <div class="picture"><img src="meal1.jpg" alt="test"></div>
-
-            <div class="data">
-                <h4 class="results__name">Pasta with Tomato ...</h4>
-                <p class="results__author">The Pioneer Woman</p>
-            </div>
-        </a>
-
-        <a href="#" class="item">
-            <div class="picture"><img src="meal1.jpg" alt="test"></div>
-
-            <div class="data">
-                <h4 class="results__name">Pasta with Tomato ...</h4>
-                <p class="results__author">The Pioneer Woman</p>
-            </div>
-        </a>
-
-        <a href="#" class="item">
-            <div class="picture"><img src="meal1.jpg" alt="test"></div>
-
-            <div class="data">
-                <h4 class="results__name">Pasta with Tomato ...</h4>
-                <p class="results__author">The Pioneer Woman</p>
-            </div>
-        </a>
-    </div>
-    <div class="pages-buttons">
-        <button class="button previous-button">Previous</button>
-        <button class="button next-button">Next</button>
-    </div>
--->
 
     <script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
 </body>
