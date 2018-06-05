@@ -38,7 +38,7 @@ html {
 
 .header {
     position: absolute;
-    top:  50%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -65,7 +65,7 @@ form {
 }
 
 .search-field {
-   
+
     align-self: center;
     padding: 10px;
     border-radius: 10px;
@@ -99,9 +99,13 @@ form {
 }
 
 @media only screen and (max-width: 804px) {
-    
-    .button {margin-right: 0;}
-    .search-field {margin-bottom: 10px;}
+
+    .button {
+        margin-right: 0;
+    }
+    .search-field {
+        margin-bottom: 10px;
+    }
 }
 
 
@@ -111,7 +115,7 @@ form {
 
 /*------------------------------------------*/
 
-
+/*
 .recipes {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -169,44 +173,84 @@ form {
     margin-right: 10%;
 }
 
-/*
-.recipes-link {
-    display:flex;
-    align-content: center;
-}
-
-.recipes-link__photo {
-    flex: 1;
-    margin:0
-}
-
-.recipes-link__photo img {
-    width: 100%;
-    height: auto;
-}
-
-.recipes_link__data {
-    flex: 2;
-}
 */
 
-
-.test {
+.bottom {
     height: 100vh;
+    color: black;
+}
+
+.full-recipe {
+    height: 75%;
+}
+
+.flex-container {
+    display: flex;
+    height: 25%;
+    position: relative;
+}
+
+.recipe {
+    flex: 1;
+    padding: 10px;
+    position: relative;
+    background-color: #000;
+    background-image: url(meal1.jpg);
+    background-position: center;
+    background-size: cover;
+    opacity: 0.7;
+    transition: all .2s;
+    text-align: center;
+}
+
+.recipe:hover {
+    transform: translateY(-3%);
+    opacity: 1;
+}
+
+.recipe-title,
+.recipe-author {
+    position: absolute;
+    left: 10px;
+}
+
+.recipe-author {
+    font-size: 70%;
+    bottom: 35%;
+    padding: 5px;
+    background-color: #f1c40f;
+    border-radius: 10px;
+}
+
+.recipe-title {
+    bottom: 15%;
+    font-size: 150%;
+    font-weight: 400;
+    color: #fff;
+}
+
+.arrow-left,
+.arrow-right {
+    position: absolute;
+    font-size: 200%;
+    display: block;
+    color: #454545;
+    transition: all 0.2s;
+}
+
+.arrow-left:hover,
+.arrow-right:hover {
+    transform: scale(1.05);
+    color: #000;
 }
 
 
+.arrow-left {
+    top:35%;
+    left: .2%;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.arrow-right {
+    top:35%;
+    right: .2%;
+}
