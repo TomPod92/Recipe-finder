@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="Grid.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="queries.css">
 
     <title>Recipe finder</title>
 </head>
@@ -26,84 +27,232 @@
         </header>
     </div>
 
-    <!-------------------------------FULL RECIPE AND SHOPPING LIST------------------------------>
+    <!-------------------------------FULL RECIPE ------------------------------>
+
     <section class="bottom">
-        <div class="flex-container__upper">
-            <div class="full-recipe">
-                <figure class="full-recipe__figure">
-                    <img src="meal1.jpg" alt="Tomato" class="full-recipe__image">
-                    <h4 class="full-recipe__title">
-                        <span>Pasta with tomato cream sauce</span>
-                    </h4>
-                    <div class="full-recipe__like">
-                        <ion-icon name="heart-empty"></ion-icon>
+        <div class="row">
+            <div class="col span-1-of-2 left">
+                <div class="box">
+                    <img src="meal1.jpg" alt="test" class="full-recipe-photo">
+                    <h4 class="full-recipe-header">Some really nice meal</h4>
+                    <ion-icon name="heart-empty" class="full-recipe-likes"></ion-icon>
+                </div>
+
+                <div class="full-recipe-details">
+                    <div class="details-buttons">
+                        <div class="timer">
+                            <ion-icon name="timer"></ion-icon><span class="minutes">45</span>minutes
+                        </div>
+                        <div class="number">
+                            <ion-icon name="people"></ion-icon><span class="servings">2</span>servings
+                            <ion-icon name="add-circle"></ion-icon>
+                            <ion-icon name="remove-circle"></ion-icon>
+                        </div>
                     </div>
-                </figure>
 
-                <div class="ingridients-container">
-                    <ul class="full-recipe__ingridients">
-                        <li>
-                            <ion-icon name="arrow-round-forward"></ion-icon><span class="count">4</span><span class="unit"> g</span><span class="ingridient"> salt</span></li>
+                </div>
 
-                        <li>
-                            <ion-icon name="arrow-round-forward"></ion-icon><span class="count">4</span><span class="unit"> g</span><span class="ingridient"> salt</span></li>
+                <div class="full-recipe-ingredients">
+                    <ul class="ingredients-list">
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egs</span>
+                        </li>
 
-                        <li>
-                            <ion-icon name="arrow-round-forward"></ion-icon><span class="count">4</span><span class="unit"> g</span><span class="ingridient"> salt</span></li>
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egssssssssss</span>
+                        </li>
 
-                        <li>
-                            <ion-icon name="arrow-round-forward"></ion-icon><span class="count">4</span><span class="unit"> g</span><span class="ingridient"> salt</span>
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egs</span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsda d ds sass cxxxxxxxx cxxxxxxxx </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsfsdsdsd </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsf fssddss </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsda d ds sass cxxxxxxxx cxxxxxxxx </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsda d ds sass cxxxxxxxx cxxxxxxxx </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsda d ds sass cxxxxxxxx cxxxxxxxx </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsda d ds sass cxxxxxxxx cxxxxxxxx </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsda d ds sass cxxxxxxxx cxxxxxxxx </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsda d ds sass cxxxxxxxx cxxxxxxxx </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsda d ds sass cxxxxxxxx cxxxxxxxx </span>
+                        </li>
+
+                        <li class="ingredients-list-item">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                            <span class="count">1</span>
+                            <span class="unit">kg</span>
+                            <span class="description">egsda d ds sass cxxxxxxxx cxxxxxxxx </span>
                         </li>
                     </ul>
                 </div>
 
-                <form class="form">
-                    <button class="button">Add to shoping list<ion-icon name="cart"></ion-icon></button>
-                    <button class="button">How to cook it<ion-icon name="restaurant"></ion-icon></button>
-                </form>
+                <div class="full-recipe-buttons">
+                    <button class="button button-cart">Add to shopping cart<ion-icon name="cart"></ion-icon></button>
 
+                    <button class="button button-cook">How to cook it<ion-icon name="restaurant"></ion-icon></button>
+                </div>
             </div>
 
-            <div class="shopping-list"></div>
-            <div style="clear:both;"></div>
-        </div>
+            <!------------------------------- SHOPPING LIST  ------------------------------>
 
+            <div class="col span-1-of-2 right">
+                <h4 class="shopping-list-header">my shopping list</h4>
+                <div class="print-button"><ion-icon name="print" ></ion-icon></div>
+                
+                <div class="shopping-list">
+                    <div class="shopping-list-item  clearfix">
+                        <div><input type="number" value="500" step="100" class="list-input"></div>
+                        <div class="list-unit">g </div>
+                        <div class="list-description">fdfdf</div>
+                        <div class="list-button">
+                            <ion-icon name="trash"></ion-icon>
+                        </div>
+                    </div>
 
-        <!----------------------------------------RECIPES LIST--------------------------------------->
+                    <div class="shopping-list-item  clearfix">
+                        <div><input type="number" value="500" step="100" class="list-input"></div>
+                        <div class="list-unit">g </div>
+                        <div class="list-description">fdfdf</div>
+                        <div class="list-button">
+                            <ion-icon name="trash"></ion-icon>
+                        </div>
+                    </div>
 
-        <div class="flex-container__lower">
-            <div class="recipe">
-                <h4 class="recipe-author">The Pioneer Woman.</h4>
-                <p class="recipe-title">Pasta with Tomato ...</p>
+                    <div class="shopping-list-item  clearfix">
+                        <div><input type="number" value="500" step="100" class="list-input"></div>
+                        <div class="list-unit">g </div>
+                        <div class="list-description">fdfdf</div>
+                        <div class="list-button">
+                            <ion-icon name="trash"></ion-icon>
+                        </div>
+                    </div>
+
+                    <div class="shopping-list-item  clearfix">
+                        <div><input type="number" value="500" step="100" class="list-input"></div>
+                        <div class="list-unit">g </div>
+                        <div class="list-description">fdfdf</div>
+                        <div class="list-button">
+                            <ion-icon name="trash"></ion-icon>
+                        </div>
+                    </div>
+
+                    <div class="shopping-list-item  clearfix">
+                        <div><input type="number" value="500" step="100" class="list-input"></div>
+                        <div class="list-unit">g </div>
+                        <div class="list-description">fdfdf</div>
+                        <div class="list-button">
+                            <ion-icon name="trash"></ion-icon>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="recipe">
-                <h4 class="recipe-author">The Pioneer Woman.</h4>
-                <p class="recipe-title">Pasta with Tomato ...</p>
-            </div>
-
-            <div class="recipe">
-                <h4 class="recipe-author">The Pioneer Woman.</h4>
-                <p class="recipe-title">Pasta with Tomato ...</p>
-            </div>
-
-            <div class="recipe">
-                <h4 class="recipe-author">The Pioneer Woman.</h4>
-                <p class="recipe-title">Pasta with Tomato ...</p>
-            </div>
-
-            <div class="recipe">
-                <h4 class="recipe-author">The Pioneer Woman.</h4>
-                <p class="recipe-title">Pasta with Tomato ...</p>
-            </div>
-            <ion-icon name="arrow-dropleft-circle" class="arrow-left"></ion-icon>
-            <ion-icon name="arrow-dropright-circle" class="arrow-right"></ion-icon>
-
-
-        </div>
     </section>
-
-
+    
+    <!------------------------------- RECIPE LIST  ------------------------------>
+    
+    <section class="section-list">
+       <ul class="list-row clearfix">
+           <li class="recipe">
+               <img src="meal1.jpg" alt="test">
+               <h4 class="recipe-title">Super awesome meal</h4>
+               <p class="recipe-author">Tomek Podsiadlik</p>
+           </li>
+           
+           <li class="recipe">
+               <img src="meal1.jpg" alt="test">
+               <h4 class="recipe-title">Super awesome meal</h4>
+               <p class="recipe-author">Tomek Podsiadlik</p>
+           </li>
+           
+           <li class="recipe">
+               <img src="meal1.jpg" alt="test">
+               <h4 class="recipe-title">Super awesome meal</h4>
+               <p class="recipe-author">Tomek Podsiadlik</p>
+           </li>
+           
+           <li class="recipe">
+               <img src="meal1.jpg" alt="test">
+               <h4 class="recipe-title">Super awesome meal</h4>
+               <p class="recipe-author">Tomek Podsiadlik</p>
+           </li>
+           
+           <li class="recipe">
+               <img src="meal1.jpg" alt="test">
+               <h4 class="recipe-title">Super awesome meal</h4>
+               <p class="recipe-author">Tomek Podsiadlik</p>
+           </li>
+           
+       </ul>
+        
+    </section>
 
 
 
@@ -116,3 +265,9 @@
 </body>
 
 </html>
+
+
+<!--
+<ion-icon name="arrow-dropleft-circle" class="arrow-left"></ion-icon>
+            <ion-icon name="arrow-dropright-circle" class="arrow-right"></ion-icon>
+-->

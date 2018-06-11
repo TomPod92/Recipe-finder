@@ -1,0 +1,64 @@
+@media only screen and (max-width: 804px) {
+
+    .button {
+        margin-right: 0;
+    }
+    .search-field {
+        margin-bottom: 10px;
+    }
+
+    .button-cart,
+    .button-cook {
+        float: none;
+        display: block;
+        width: 70%;
+        margin: 10px auto;
+    }
+
+    .full-recipe-photo {
+        display: block;
+        width: 80%;
+        height: auto;
+        margin: 20px auto;
+    }
+    
+    .full-recipe-likes {left: 10%;}
+    
+   
+
+}
+
+@media only screen and (max-width: 804px) {
+
+    .full-recipe-header {font-size: 80%;}
+
+}
+
+@media only screen and (max-width: 600px) {  
+    .col {width: 100%;}
+/*    .right {display: none;}*/
+    .full-recipe-header {font-size: 100%;}
+    
+    .recipe {
+        width:100%;
+        float:none;
+    }
+    
+    .list-row {position: static;}
+    
+    .recipe:hover {
+    transform: none;
+        
+    
+    .right {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    
+        }
+}
+
+
+
+}
+
