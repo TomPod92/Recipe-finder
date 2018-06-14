@@ -1,3 +1,7 @@
+@media only screen and (max-width: 900px) {
+    .item h4 {font-size: 70%;}
+}
+
 @media only screen and (max-width: 804px) {
 
     .button {
@@ -21,44 +25,92 @@
         height: auto;
         margin: 20px auto;
     }
-    
-    .full-recipe-likes {left: 10%;}
-    
-   
 
-}
-
-@media only screen and (max-width: 804px) {
-
-    .full-recipe-header {font-size: 80%;}
-
-}
-
-@media only screen and (max-width: 600px) {  
-    .col {width: 100%;}
-/*    .right {display: none;}*/
-    .full-recipe-header {font-size: 100%;}
-    
-    .recipe {
-        width:100%;
-        float:none;
+    .full-recipe-likes {
+        left: 10%;
     }
     
-    .list-row {position: static;}
+    .full-recipe-header {font-size: 80%;}
+}
+
+
+@media only screen and (max-width: 700px) {
+    .col {
+        width: 100%;
+    }
+    .right,
+    .left {
+        margin: 50px 0;
+    }
     
+     .button-cart {
+        float: left;
+        width: 40%;
+    }
+    .button-cook {
+        float: right;
+        width: 40%; 
+    }
+    
+    .go-back {
+        top: 5%;
+        left: 47%;
+        z-index: 100;
+    }
+
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    /*    .right {display: none;}*/
+    .full-recipe-header {
+        font-size: 100%;
+    }
+
+    .recipe {
+        width: 100%;
+        float: none;
+    }
+
+    .list-row {
+        position: static;
+    }
+
     .recipe:hover {
-    transform: none;
-        
-    
-    .right {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-    
-        }
+        transform: none;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    .left-arrow {
+        left: -4%;
+    }
+    .right-arrow {
+        right: -4%;
+    }
+
+    .up-down {
+        display: none;
+    }
+
 }
 
 
 
-}
+@media only screen and (max-width: 400px) {
 
+ .grid-container {
+     grid-template-columns: 1fr;
+     grid-template-rows: 1fr
+    }
+    
+    .next {
+        top: 40%;
+        font-size: 250%;
+    }
+}
