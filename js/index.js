@@ -1,15 +1,47 @@
 // f4b61fe97ed4569ed4d0c2eb3e4f14b6 
 // http://food2fork.com/api/search 
+import Search from './models/Search.js';
+import * as searchView from './views/searchView.js';
+import { elements } from './views/base.js';
 
-import axios from 'axios';
+// -------State of the whole app--------
+const state = {};
 
-async function getResults(query) {
-    const key = `f4b61fe97ed4569ed4d0c2eb3e4f14b6`;
-    const proxy = `https://cors-anywhere.herokuapp.com/`;
-    const res = await axios(`${proxy}http://food2fork.com/api/search?key=${key}&q=${query}`);
-    const recipes = res.data.recipes;
-    console.log(recipes);
-   
+
+
+
+
+
+const controlSearch = async () => {
+    // Get the query from view
+    const query = searchView.getInput();
+    console.log(query);
+    
+    if(query) {
+        // creat new search object and add it to state
+        state.search = new Search(query);
+        
+        // clear previous results and render spinner
+        
+        // search for recipes
+        await state.search.getResults();
+        console.log(state.search.result);
+        
+        // render results on user interface
+        searchView.renderResults(state.search.result);
+    }
+    
 }
 
-getResults('pasta');
+
+
+
+
+
+elements.searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    controlSearch();    
+});
+
+
+
