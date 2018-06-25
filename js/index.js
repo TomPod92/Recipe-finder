@@ -22,6 +22,8 @@ const controlSearch = async () => {
         state.search = new Search(query);
         
         // clear previous results and render spinner
+        searchView.clearInput();
+        searchView.clearResults();
         
         // search for recipes
         await state.search.getResults();

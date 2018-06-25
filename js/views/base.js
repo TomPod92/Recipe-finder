@@ -3,3 +3,4 @@ export const elements = {
     searchInput: document.querySelector('.search-field'),
     searchResultList: document.querySelector('.grid-container')
 }
+

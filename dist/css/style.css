@@ -344,12 +344,12 @@ form {
 }
 
 .item  {
-    background-image: linear-gradient(rgba(59, 59, 59, 0.45), rgba(59, 59, 59, 0.45)), url(../meal1.jpg);
+   /* background-image: linear-gradient(rgba(59, 59, 59, 0.45), rgba(59, 59, 59, 0.45)), url(../meal1.jpg);*/
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
-    transition: transform .2s
+    transition: transform .2s;   
 }
 
 .item h4 {
@@ -376,7 +376,7 @@ form {
 }
 
 .item:hover {
-    background-image: linear-gradient(rgba(59, 59, 59, 0.0), rgba(59, 59, 59, 0.45)), url(../meal1.jpg);
+    /*background-image: linear-gradient(rgba(59, 59, 59, 0.0), rgba(59, 59, 59, 0.45)), url(../meal1.jpg);*/
     transform: scale(1.02);
 }
 
