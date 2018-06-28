@@ -32,18 +32,49 @@ const limitRecipeTitle = (title, limit = 17) => {
     return title;
 };
 
+// -------------------------- creat,render and remove page buttons -----------------------------------
+const creatButton = (page, side) =>`<div class="next ${side}-arrow" id="${side}" data-gotopage=${side == 'left'? page - 1 : page + 1}><ion-icon name="arrow-drop${side}"></ion-icon></div>`;
+
+const renderButtons = (page) => {
+    let markup;
+    
+    if (page === 1) {
+        // no left button
+        markup = creatButton(1, 'right');
+        
+    } else if (page === 2) {
+        // both buttons
+        markup = `${creatButton(2, 'left')}${creatButton(2, 'right')}`;
+                    
+    } else if (page === 3) {
+        // no right button
+        markup = creatButton(3, 'left');        
+    }
+    
+    elements.buttonContainer.insertAdjacentHTML('beforeend', markup);
+};
+
+export const removeButton = () => {
+    elements.buttonContainer.innerHTML = '';
+};
+
 // --------------render recipes in recipe gallery after a search button is clicked -----------
+export const renderResults = (recipes, page = 1, resultsPerPage = 9) => { 
+    const start = (page - 1) * resultsPerPage;
+    const end = page * resultsPerPage;
+    recipes.slice(start, end).forEach(renderRecipe);
+
+    renderButtons(page);
+};
+
 const renderRecipe = recipe => {
     
     const url = recipe.image_url;
 
     const markup = `<div class="item" style="background-image: linear-gradient(rgba(59, 59, 59, 0.2), rgba(59, 59, 59, 0.2)), url(${recipe.image_url}"><h4>${limitRecipeTitle(recipe.title)}</h4><p>45<span>min</span></p></div>`;     
-    
     elements.searchResultList.insertAdjacentHTML("beforeend", markup);
 }
 
-export const renderResults = recipes => {
-    recipes.forEach(renderRecipe);
-};
+
 
 

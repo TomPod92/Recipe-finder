@@ -421,7 +421,25 @@ form {
     bottom: 0;
 }
 
+/*------------------------------------------*/
 
+/*             SPINNER LOADER               */
+
+/*------------------------------------------*/
+
+
+.loader {
+    font-size: 600%;
+    position: absolute;
+    top: 43%;
+    left: 45%;
+    animation: rotate 1.5s infinite linear;
+}
+
+@keyframes rotate {
+    0% {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+}
 
 
 
