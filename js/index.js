@@ -1,7 +1,9 @@
 // f4b61fe97ed4569ed4d0c2eb3e4f14b6 
 // http://food2fork.com/api/search 
 import Search from './models/Search.js';
+import Recipe from './models/Recipe.js';
 import * as searchView from './views/searchView.js';
+import * as recipeView from './views/recipeView.js';
 import { elements, renderSpinner, clearSpinner } from './views/base.js';
 
 // ------- State of the whole app --------
@@ -9,12 +11,13 @@ const state = {};
 
 
 
-
-
+//------------------------------------------------------------------
+// ------------------- SEARCH FORM CONTROLLER ----------------------
+//------------------------------------------------------------------
 const controlSearch = async () => {
     // Get the query from view
     const query = searchView.getInput();
-    console.log(query);
+    //console.log(query);
     
     if(query) {
         // creat new search object and add it to state
@@ -25,22 +28,25 @@ const controlSearch = async () => {
         searchView.clearResults();
         renderSpinner(elements.searchResultContainer);        
         
-        // search for recipes
-        await state.search.getResults();
-        console.log(state.search.result);
-        
-        // render results on user interface
-        clearSpinner();
-        searchView.renderResults(state.search.result);
+        try {
+            // search for recipes
+            await state.search.getResults();
+            //console.log(state.search.result);
+
+            // render results on user interface
+            clearSpinner();
+            searchView.renderResults(state.search.result);
+            
+        } catch(error) {
+            alert('Ups, there is something wrong with the search');
+            clearSpinner();
+        }
+       
     }
     
 }
 
-
-
-
-
-// ------------ Event that happens after clicking of search button -----------
+// ------------ Event that happens after clicking on search button -----------
 elements.searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     controlSearch();    
@@ -58,6 +64,53 @@ elements.searchResultContainer.addEventListener('click', event => {
         searchView.renderResults(state.search.result, goToPage);
     }
 });
+
+
+//------------------------------------------------------------------
+// ------------------- FULL RECIPE CONTROLLER ----------------------
+//------------------------------------------------------------------
+
+// get full recipe details from API based on id
+const controlRecipe = async (id) => {
+    const recipeId = id;
+    
+    if(id) {
+        // creat new recipe object and add it to state
+        state.recipe = new Recipe(recipeId);
+        
+        // clear previous results and render spinner
+        recipeView.clearResults();
+        renderSpinner(elements.fullRecipeContainer);
+        
+        try {
+            // search for a recipe
+        await state.recipe.getRecipe();
+        
+        // render results on user interface
+        console.log(state.recipe);
+            
+        } catch (error) {
+            alert('Something went wrong during recipe processing, please try again.')
+        }
+        
+    }
+}
+
+// ------------ Event that happens after clicking on single recipe -----------
+document.querySelector('.grid-container').addEventListener('click', (event) => { 
+    let id;
+    
+    if( event.target.className){
+        id = parseInt(event.target.dataset.recipeid);
+        console.log(id);
+    } else {
+        id = parseInt(event.target.parentNode.dataset.recipeid);
+        console.log(id);
+    }
+    
+    controlRecipe(id);
+});
+
 
 
 

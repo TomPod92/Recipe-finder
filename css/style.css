@@ -428,6 +428,7 @@ form {
 /*------------------------------------------*/
 
 
+
 .loader {
     font-size: 600%;
     position: absolute;
@@ -441,8 +442,29 @@ form {
     100% {transform: rotate(360deg);}
 }
 
+/*
+.loader {
+    font-size: 600%;
+    position: absolute; 
+    animation: rotate 1.5s infinite linear;
+}
+
+.upper .loader {
+    top: 43%;
+    left: 45%;
+}
+
+.left .loader {
+    top: 43%;
+    left: 28%;
+}
 
 
+@keyframes rotate {
+    0% {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+}
+*/
 
 
 

@@ -440,7 +440,30 @@ form {
     100% {transform: rotate(360deg);}
 }
 
+/*
+.loader {
+    font-size: 600%;
+    position: absolute; 
+    animation: rotate 1.5s infinite linear;
+}
 
+.upper .loader {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
+.left .loader {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes rotate {
+    0% {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+}
+
+*/
 
 

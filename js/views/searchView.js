@@ -71,7 +71,7 @@ const renderRecipe = recipe => {
     
     const url = recipe.image_url;
 
-    const markup = `<div class="item" style="background-image: linear-gradient(rgba(59, 59, 59, 0.2), rgba(59, 59, 59, 0.2)), url(${recipe.image_url}"><h4>${limitRecipeTitle(recipe.title)}</h4><p>45<span>min</span></p></div>`;     
+    const markup = `<div class="item" style="background-image: linear-gradient(rgba(59, 59, 59, 0.2), rgba(59, 59, 59, 0.2)), url(${recipe.image_url}" data-recipeid=${recipe.recipe_id}><h4>${limitRecipeTitle(recipe.title)}</h4><p>45<span>min</span></p></div>`;     
     elements.searchResultList.insertAdjacentHTML("beforeend", markup);
 }
 
