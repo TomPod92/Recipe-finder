@@ -31,7 +31,7 @@ const controlSearch = async () => {
         try {
             // search for recipes
             await state.search.getResults();
-            //console.log(state.search.result);
+            console.log(state.search.result);
 
             // render results on user interface
             clearSpinner();
@@ -74,7 +74,7 @@ elements.searchResultContainer.addEventListener('click', event => {
 const controlRecipe = async (id) => {
     const recipeId = id;
     
-    if(id) {
+    if(recipeId) {
         // creat new recipe object and add it to state
         state.recipe = new Recipe(recipeId);
         
@@ -84,10 +84,13 @@ const controlRecipe = async (id) => {
         
         try {
             // search for a recipe
-        await state.recipe.getRecipe();
+            await state.recipe.getRecipe();
         
-        // render results on user interface
-        console.log(state.recipe);
+            // render results on user interface
+            console.log(state.recipe);
+            
+            clearSpinner();
+            recipeView.renderFullRecipe(state.recipe);
             
         } catch (error) {
             alert('Something went wrong during recipe processing, please try again.')
@@ -101,10 +104,10 @@ document.querySelector('.grid-container').addEventListener('click', (event) => {
     let id;
     
     if( event.target.className){
-        id = parseInt(event.target.dataset.recipeid);
+        id = event.target.dataset.recipeid;
         console.log(id);
     } else {
-        id = parseInt(event.target.parentNode.dataset.recipeid);
+        id = event.target.parentNode.dataset.recipeid;
         console.log(id);
     }
     

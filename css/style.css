@@ -132,6 +132,7 @@ form {
 .right {
     height: 100vh;
     background-color: #fefbf0;
+    position: relative;
 }
 
 .box {
@@ -238,6 +239,10 @@ form {
 
 .button-cook {
     float: right;
+}
+
+.bulletpoint {
+    display: inline-block;
 }
 
 /*------------------------------------------*/
@@ -432,39 +437,17 @@ form {
 .loader {
     font-size: 600%;
     position: absolute;
-    top: 43%;
-    left: 45%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
     animation: rotate 1.5s infinite linear;
 }
 
 @keyframes rotate {
-    0% {transform: rotate(0);}
-    100% {transform: rotate(360deg);}
+    0% {transform: translate(-50%, -50%) rotate(0);}
+    100% {transform: translate(-50%, -50%) rotate(360deg);}
 }
-
-/*
-.loader {
-    font-size: 600%;
-    position: absolute; 
-    animation: rotate 1.5s infinite linear;
-}
-
-.upper .loader {
-    top: 43%;
-    left: 45%;
-}
-
-.left .loader {
-    top: 43%;
-    left: 28%;
-}
-
-
-@keyframes rotate {
-    0% {transform: rotate(0);}
-    100% {transform: rotate(360deg);}
-}
-*/
 
 
 
