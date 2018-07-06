@@ -16,7 +16,8 @@ const state = {};
 //------------------------------------------------------------------
 const controlSearch = async () => {
     // Get the query from view
-    const query = searchView.getInput();
+    //const query = searchView.getInput();
+    const query = 'pizza';
     //console.log(query);
     
     if(query) {
@@ -41,9 +42,7 @@ const controlSearch = async () => {
             alert('Ups, there is something wrong with the search');
             clearSpinner();
         }
-       
     }
-    
 }
 
 // ------------ Event that happens after clicking on search button -----------
@@ -51,6 +50,12 @@ elements.searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     controlSearch();    
 });
+
+window.addEventListener('load', (event) => {
+    event.preventDefault();
+    controlSearch();    
+});
+
 
 
 // ----------- Events for left and right buttons ----------------------
@@ -94,8 +99,7 @@ const controlRecipe = async (id) => {
             
         } catch (error) {
             alert('Something went wrong during recipe processing, please try again.')
-        }
-        
+        }   
     }
 }
 
@@ -110,7 +114,7 @@ document.querySelector('.grid-container').addEventListener('click', (event) => {
         id = event.target.parentNode.dataset.recipeid;
         console.log(id);
     }
-    
+
     controlRecipe(id);
 });
 

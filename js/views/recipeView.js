@@ -1,13 +1,14 @@
-import {
-    elements
-} from './base.js';
+import {elements} from './base.js';
 
+
+// clear previous full recipe before loading new one
 export const clearResults = () => {
     elements.fullRecipeContainer.innerHTML = '';
 };
 
-export const renderFullRecipe = (recipe) => {
 
+// render full recipe
+export const renderFullRecipe = (recipe) => {
     const markup = `
                 <div class="box">
                     <div class="full-recipe-photo"><img src="${recipe.image}" alt="${recipe.title}"></div>
@@ -30,31 +31,34 @@ export const renderFullRecipe = (recipe) => {
 
                 <div class="full-recipe-ingredients">
                     <ul class="ingredients-list">
-                        ${renderIngredientsList(recipe.ingredients)}
-
-                        
+                        ${renderIngredientsList(recipe.ingredients)}    
                     </ul>
+                </div>
+
+                <div class="full-recipe-buttons">
+                    <button class="button button-cart">Add to shopping cart<ion-icon name="cart"></ion-icon></button>
+
+                    <button class="button button-cook"><a href="${recipe.url}" target="_blank">How to cook it</a><ion-icon name="restaurant"></ion-icon></button>
                 </div>
     `;
     elements.fullRecipeContainer.insertAdjacentHTML("beforeend", markup);
     renderIngredientsList(recipe.ingredients);
 };
 
+
+// render ingredients list
 const renderIngredientsList = (recipeList) => {
     let markup = ``;
     
     recipeList.forEach( (current) => {
         markup += `
-             <li class="ingredients-list-item">
-                            <ion-icon name="arrow-round-forward" class="bulletpoint"></ion-icon>
-                            <span class="count">1</span>
-                            <span class="unit">kg</span>
-                            <span class="description">${current}</span>
-                        </li>
-    `;
-        
+                    <li class="ingredients-list-item">
+                        <ion-icon name="arrow-round-forward" class="bulletpoint"></ion-icon>
+                        <span class="count">1</span>
+                        <span class="unit">kg</span>
+                        <span class="description">${current}</span>
+                    </li>
+                `;  
     });
-    console.log(markup);
-        return markup;
-    
+    return markup;   
 }

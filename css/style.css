@@ -241,6 +241,15 @@ form {
     float: right;
 }
 
+.button-cook a:link, 
+.button-cook a:visited,
+.button-cook a:active,
+.button-cook a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+
 .bulletpoint {
     display: inline-block;
 }

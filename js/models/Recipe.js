@@ -23,4 +23,37 @@ export default class Recipe {
             alert('Ups, something went wrong, please try again.')
         }
     }
+    
+    calcTime() {
+        const numberOfIngredients = this.ingredients.length;
+        const periods = Math.ceil(numberOfIngredients / 3);
+        this.time = periods * 15;
+    }
+    
+    calcServings() { 
+        this.servings = 4; 
+    }
+    
+    standardizeIngredients() {
+        
+        const units = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
+        const newUnits = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
+        
+        const newIngredients = this.ingredients.map( (current) => {
+            
+            // unform units
+            let ingredient = current.toLowerCase();
+            
+            units.forEach( (currentUnit, index) => {
+               ingredient = ingredient.replace(currentUnit, newUnits[index] ) 
+            });
+            
+            // remove parentheses
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+            // parse ingredients into count, unit and ingredient
+            
+            return ingredient;
+        });
+        this.ingredients = newIngredients;
+    }
 }
