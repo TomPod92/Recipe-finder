@@ -40,7 +40,6 @@ export default class Recipe {
         const newUnits = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
         
         const newIngredients = this.ingredients.map( (current) => {
-            
             // unform units
             let ingredient = current.toLowerCase();
             
@@ -51,9 +50,66 @@ export default class Recipe {
             // remove parentheses
             ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
             // parse ingredients into count, unit and ingredient
+            const arrayIngredient = ingredient.split(' ');
+            const unitIndex = arrayIngredient.findIndex(element => newUnits.includes(element));
             
-            return ingredient;
+            let objectIngredient;
+            
+            if (unitIndex > -1) {
+                // there is a unit in that ingredient
+                const arrayCount = arrayIngredient.slice(0, unitIndex); 
+                let count;
+                
+                if (arrayCount.length === 1) {count = eval(arrayIngredient[0].replace('-','+'));} 
+                else {count = eval(arrayIngredient.slice(0, unitIndex).join('+')) ;}
+                
+                objectIngredient = {
+                    count: Math.round(count*10)/10,
+                    unit: arrayIngredient[unitIndex],
+                    ingredient: arrayIngredient.slice(unitIndex+1).join(' ')
+                };
+                if(isNaN(objectIngredient.count)) {
+                    objectIngredient.count =  1;
+                }
+                
+            } else if (parseInt(arrayIngredient[0], 10)) {
+                // there is no unit, but first element is a number
+                objectIngredient = {
+                    count: Math.round(parseInt(arrayIngredient[0], 10)*10)/10,
+                    unit: '',
+                    ingredient: arrayIngredient.slice(1).join(' ')
+                };
+                
+                if(isNaN(objectIngredient.count)) {
+                    objectIngredient.count =  1;
+                }
+            } else if(unitIndex === -1) {
+                // there is no unit in that ingredient
+                
+                objectIngredient = {
+                    count: 1,
+                    unit: '',
+                    ingredient: ingredient
+                };
+            }
+            
+            
+            return objectIngredient;
         });
+        
         this.ingredients = newIngredients;
+    }
+    
+    updateServings(type) {
+        // update servings
+        const newServings = type === 'increase' ? this.servings + 1 : this.servings - 1
+        
+        // update ingredients
+        this.ingredients.forEach(current => {
+            current.count = current.count * (newServings / this.servings);
+        })
+        
+        this.servings = newServings;
+      
     }
 }

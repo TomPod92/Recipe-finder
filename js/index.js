@@ -16,8 +16,8 @@ const state = {};
 //------------------------------------------------------------------
 const controlSearch = async () => {
     // Get the query from view
-    //const query = searchView.getInput();
-    const query = 'pizza';
+    const query = searchView.getInput();
+    
     //console.log(query);
     
     if(query) {
@@ -51,13 +51,6 @@ elements.searchForm.addEventListener('submit', (event) => {
     controlSearch();    
 });
 
-window.addEventListener('load', (event) => {
-    event.preventDefault();
-    controlSearch();    
-});
-
-
-
 // ----------- Events for left and right buttons ----------------------
 elements.searchResultContainer.addEventListener('click', event => {
     const button = event.target.closest('.next');
@@ -88,8 +81,12 @@ const controlRecipe = async (id) => {
         renderSpinner(elements.fullRecipeContainer);
         
         try {
-            // search for a recipe
+            // search for a recipe and standardize ingredients
             await state.recipe.getRecipe();
+            console.log(state.recipe.ingredients);
+            state.recipe.standardizeIngredients();
+            state.recipe.calcTime();
+            state.recipe.calcServings();
         
             // render results on user interface
             console.log(state.recipe);
@@ -107,7 +104,7 @@ const controlRecipe = async (id) => {
 document.querySelector('.grid-container').addEventListener('click', (event) => { 
     let id;
     
-    if( event.target.className){
+    if (event.target.className){
         id = event.target.dataset.recipeid;
         console.log(id);
     } else {
@@ -119,5 +116,22 @@ document.querySelector('.grid-container').addEventListener('click', (event) => {
 });
 
 
+// ------------ Event that happens after clicking on increase or desrease servings -----------
+document.querySelector('.left').addEventListener('click', (event) => {
+    if (event.target.closest('.increase')) {
+        state.recipe.updateServings('increase');
+        recipeView.updateServingsIngredients(state.recipe);
+        //console.log('increase was clicked');
+    } else if (event.target.closest('.decrease')) {
+        //console.log('decrease was clicked');
+        if(state.recipe.servings > 1) {
+            state.recipe.updateServings('decrease');
+            recipeView.updateServingsIngredients(state.recipe);
+        }
+    }
+   
+    //console.log(state.recipe);
+
+});
 
 
