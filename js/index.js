@@ -2,14 +2,16 @@
 // http://food2fork.com/api/search 
 import Search from './models/Search.js';
 import Recipe from './models/Recipe.js';
+import List from './models/List.js';
 import * as searchView from './views/searchView.js';
 import * as recipeView from './views/recipeView.js';
+import * as listView from './views/listView.js';
 import { elements, renderSpinner, clearSpinner } from './views/base.js';
 
 // ------- State of the whole app --------
 const state = {};
 
-
+window.state = state;
 
 //------------------------------------------------------------------
 // ------------------- SEARCH FORM CONTROLLER ----------------------
@@ -117,7 +119,7 @@ document.querySelector('.grid-container').addEventListener('click', (event) => {
 
 
 // ------------ Event that happens after clicking on increase or desrease servings -----------
-document.querySelector('.left').addEventListener('click', (event) => {
+elements.fullRecipeContainer.addEventListener('click', (event) => {
     if (event.target.closest('.increase')) {
         state.recipe.updateServings('increase');
         recipeView.updateServingsIngredients(state.recipe);
@@ -129,9 +131,50 @@ document.querySelector('.left').addEventListener('click', (event) => {
             recipeView.updateServingsIngredients(state.recipe);
         }
     }
-   
-    //console.log(state.recipe);
-
 });
 
+//------------------------------------------------------------------
+// ------------------ SHOPPING LIST CONTROLLER ---------------------
+//------------------------------------------------------------------
+window.l = new List();
+
+
+// ------------ Event that happens after clicking on "add to shopping cart" -----------
+elements.fullRecipeContainer.addEventListener('click', event => {
+    if(event.target.closest('.button-cart')){
+        controlList();
+    } 
+})
+
+const controlList = () => {
+    // creat new list if there is none yet
+    if(!state.list) state.list = new List();
+    
+    // add each ingredient to the list and render it in UI
+    state.recipe.ingredients.forEach(current => {
+        
+        const item = state.list.addItem(current.count, current.unit, current.ingredient);
+        listView.renderItem(item);
+    }); 
+}
+
+// ------------ Removing specific item from shopping cart and update shopping list -----------
+
+elements.shoppingList.addEventListener('click', (event) => {
+    const id = event.target.closest('.shopping-list-item').dataset.itemid;
+    
+    // delete button
+    if(event.target.matches('.list-button, .list-button *')) {
+        state.list.deleteItem(id);
+        listView.deleteItem(id);
+    } 
+    // update count
+    else if (event.target.matches('.list-input')) {
+        const value = parseFloat(event.target.value, 10);
+        state.list.updateCount(id, value);
+    }
+    
+    
+
+});
 

@@ -291,8 +291,10 @@ form {
 
 .shopping-list {
     width: 80%;
+    height: 80%;
     margin: 0 auto;
     font-size: 80%;
+    overflow-y: auto;
 }
 
 .shopping-list-item {

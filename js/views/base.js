@@ -5,7 +5,8 @@ export const elements = {
     searchResultList: document.querySelector('.grid-container'),
     buttonContainer: document.querySelector('.button-container'),
     fullRecipeContainer: document.querySelector('.left'),
-    row: document.querySelector('.row')
+    row: document.querySelector('.row'),
+    shoppingList: document.querySelector('.shopping-list')
 }
 
 export const renderSpinner = (parent) => {
