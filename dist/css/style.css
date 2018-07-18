@@ -350,16 +350,19 @@ form {
 /*------------------------------------------*/
 
 /*             RECIPE GALLERY               */
+/*               LIKES LIST                 */
 
 /*------------------------------------------*/
 
-.upper {
+.upper,
+.likes-gallery {
     background-color: #fefbf0;
     height: 100vh;
     position: relative;
 }
 
-.grid-container {
+.grid-container,
+.likes-grid-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -372,7 +375,8 @@ form {
     transform: translate(-50%, -50%);
 }
 
-.item  {
+.item,
+.like-item {
    /* background-image: linear-gradient(rgba(59, 59, 59, 0.45), rgba(59, 59, 59, 0.45)), url(../meal1.jpg);*/
     background-repeat: no-repeat;
     background-size: cover;
@@ -381,7 +385,8 @@ form {
     transition: transform .2s;   
 }
 
-.item h4 {
+.item h4,
+.like-item h4 {
     color: #fff;
     position: absolute;
     display: block;
@@ -394,7 +399,8 @@ form {
     transition: opacity 0.2s;
 }
 
-.item p {
+.item p,
+.like-item p {
     position: absolute;
     top: 50%;
     left: 50%;    
@@ -404,17 +410,21 @@ form {
     transition: opacity 0.2s;   
 }
 
-.item:hover {
+.item:hover,
+.like-item:hover {
     /*background-image: linear-gradient(rgba(59, 59, 59, 0.0), rgba(59, 59, 59, 0.45)), url(../meal1.jpg);*/
     transform: scale(1.02);
 }
 
 .item:hover h4,
-.item:hover p {
+.item:hover p,
+.like-item:hover h4,
+.like-item:hover p {
     opacity: 1;
 }
 
-.next {
+.next,
+.likes-next {
     position: absolute;
     top: 47%;
     font-size: 300%;
@@ -422,32 +432,48 @@ form {
 }
 
 .next:hover,
-.up-down:hover {
+.up-down:hover,
+.likes-next:hover,
+.likes-up-down:hover {
     color: #f1c40f;
     transform: scale(1.15);
 }
 
-.left-arrow {
+.left-arrow,
+.likes-left-arrow {
     left: 1%;
 }
 
-.right-arrow {
+.right-arrow,
+.likes-right-arrow {
     right: 1%;
 }
 
-.up-down {
+.up-down,
+.likes-up-down {
     position: absolute;
     font-size: 300%;
     left: 47%;
     transition: all .2s;
 }
 
-.up-arrow {
+.up-arrow
+.likes-up-arrow {
     top: 10px;
 }
 
 .down-arrow {
     bottom: 0;
+}
+
+/*------------------------------------------*/
+
+/*               LIKES LIST                 */
+
+/*------------------------------------------*/
+
+.like-item {
+    background-image: url(../meal1.jpg);
 }
 
 /*------------------------------------------*/

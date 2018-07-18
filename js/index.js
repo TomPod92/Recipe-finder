@@ -3,6 +3,7 @@
 import Search from './models/Search.js';
 import Recipe from './models/Recipe.js';
 import List from './models/List.js';
+import Likes from './models/Likes.js';
 import * as searchView from './views/searchView.js';
 import * as recipeView from './views/recipeView.js';
 import * as listView from './views/listView.js';
@@ -103,7 +104,7 @@ const controlRecipe = async (id) => {
 }
 
 // ------------ Event that happens after clicking on single recipe -----------
-document.querySelector('.grid-container').addEventListener('click', (event) => { 
+elements.searchResultList.addEventListener('click', (event) => { 
     let id;
     
     if (event.target.className){
@@ -152,10 +153,10 @@ const controlList = () => {
     
     // add each ingredient to the list and render it in UI
     state.recipe.ingredients.forEach(current => {
-        
         const item = state.list.addItem(current.count, current.unit, current.ingredient);
         listView.renderItem(item);
     }); 
+    document.querySelector('.button-cart').style.display="none";
 }
 
 // ------------ Removing specific item from shopping cart and update shopping list -----------
@@ -173,8 +174,23 @@ elements.shoppingList.addEventListener('click', (event) => {
         const value = parseFloat(event.target.value, 10);
         state.list.updateCount(id, value);
     }
-    
-    
-
 });
 
+
+//------------------------------------------------------------------
+// ------------------ LIKES LIST CONTROLLER ---------------------
+//------------------------------------------------------------------
+
+elements.likesList.addEventListener('click', event => {
+   let id;
+    
+    if (event.target.className){
+        id = event.target.dataset.recipeid;
+        console.log(id);
+    } else {
+        id = event.target.parentNode.dataset.recipeid;
+        console.log(id);
+    }
+
+    controlRecipe(id); 
+});

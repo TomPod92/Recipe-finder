@@ -3,6 +3,7 @@ export const elements = {
     searchInput: document.querySelector('.search-field'),
     searchResultContainer: document.querySelector('.upper'),
     searchResultList: document.querySelector('.grid-container'),
+    likesList: document.querySelector('.likes-grid-container'),
     buttonContainer: document.querySelector('.button-container'),
     fullRecipeContainer: document.querySelector('.left'),
     row: document.querySelector('.row'),
