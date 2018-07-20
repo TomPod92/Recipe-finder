@@ -7,13 +7,14 @@ import Likes from './models/Likes.js';
 import * as searchView from './views/searchView.js';
 import * as recipeView from './views/recipeView.js';
 import * as listView from './views/listView.js';
+import * as likesView from './views/likesView.js';
 import { elements, renderSpinner, clearSpinner } from './views/base.js';
 
 // ------- State of the whole app --------
 const state = {};
 
 window.state = state;
-
+state.likes = new Likes();
 //------------------------------------------------------------------
 // ------------------- SEARCH FORM CONTROLLER ----------------------
 //------------------------------------------------------------------
@@ -44,9 +45,10 @@ const controlSearch = async () => {
         } catch(error) {
             alert('Ups, there is something wrong with the search');
             clearSpinner();
+            console.log(error);
         }
     }
-}
+};
 
 // ------------ Event that happens after clicking on search button -----------
 elements.searchForm.addEventListener('submit', (event) => {
@@ -95,13 +97,14 @@ const controlRecipe = async (id) => {
             console.log(state.recipe);
             
             clearSpinner();
-            recipeView.renderFullRecipe(state.recipe);
+            recipeView.renderFullRecipe(state.recipe, state.likes.checkIfLiked(recipeId));
             
         } catch (error) {
-            alert('Something went wrong during recipe processing, please try again.')
+            alert('Something went wrong during recipe processing, please try again.');
+            console.log(error);
         }   
     }
-}
+};
 
 // ------------ Event that happens after clicking on single recipe -----------
 elements.searchResultList.addEventListener('click', (event) => { 
@@ -145,7 +148,7 @@ elements.fullRecipeContainer.addEventListener('click', event => {
     if(event.target.closest('.button-cart')){
         controlList();
     } 
-})
+});
 
 const controlList = () => {
     // creat new list if there is none yet
@@ -157,7 +160,7 @@ const controlList = () => {
         listView.renderItem(item);
     }); 
     document.querySelector('.button-cart').style.display="none";
-}
+};
 
 // ------------ Removing specific item from shopping cart and update shopping list -----------
 
@@ -181,8 +184,55 @@ elements.shoppingList.addEventListener('click', (event) => {
 // ------------------ LIKES LIST CONTROLLER ---------------------
 //------------------------------------------------------------------
 
-elements.likesList.addEventListener('click', event => {
+elements.fullRecipeContainer.addEventListener('click', event => {
    let id;
+    
+    if (event.target.matches('.full-recipe-likes, .full-recipe-likes *')){
+        id = event.target.dataset.recipeid;
+        console.log('it works');
+        console.log(event.target);
+        controlLike();
+    }
+});
+
+const controlLike = () => {
+    if(!state.likes) state.likes = new Likes();
+    
+    const currentID = state.recipe.id;
+    
+    if(!state.likes.checkIfLiked(currentID)) {
+        // Add like to the state
+        const newLike = state.likes.addLike(currentID, state.recipe.title, state.recipe.image)
+        // Toggle like button
+        likesView.toggleLikeButton(true);
+        // Add like to UI
+        likesView.renderResults(state.likes.likes);
+        console.log(state.likes);
+    } else {
+        // Remove like from the state
+        state.likes.deleteLike(currentID);
+        // Toggle like button
+        likesView.toggleLikeButton(false);
+        // Remove like from UI
+        likesView.renderResults(state.likes.likes);
+        console.log(state.likes);
+    }
+};
+
+// ----------- Events for left and right buttons in likes section ----------------------
+elements.likesGallery.addEventListener('click', event => {
+    const button = event.target.closest('.likes-next');
+
+    if(button) {
+        const goToPage = parseInt(button.dataset.gotopage, 10);
+        likesView.removeButton();
+        likesView.renderResults(state.likes.likes, goToPage);
+    }
+});
+
+// ------------ Event that happens after clicking on single recipe in likes section -----------
+elements.likesList.addEventListener('click', (event) => { 
+    let id;
     
     if (event.target.className){
         id = event.target.dataset.recipeid;
@@ -192,5 +242,5 @@ elements.likesList.addEventListener('click', event => {
         console.log(id);
     }
 
-    controlRecipe(id); 
+    controlRecipe(id);
 });

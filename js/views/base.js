@@ -7,7 +7,11 @@ export const elements = {
     buttonContainer: document.querySelector('.button-container'),
     fullRecipeContainer: document.querySelector('.left'),
     row: document.querySelector('.row'),
-    shoppingList: document.querySelector('.shopping-list')
+    shoppingList: document.querySelector('.shopping-list'),
+    likeContainer: document.querySelector('.box'),
+    likeButton: document.querySelector('.full-recipe-likes'),
+    likesGallery: document.querySelector('.likes-gallery'),
+    likeButtonContainer: document.querySelector('.likes-button-container')
 }
 
 export const renderSpinner = (parent) => {

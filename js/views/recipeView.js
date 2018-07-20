@@ -8,12 +8,16 @@ export const clearResults = () => {
 
 
 // render full recipe
-export const renderFullRecipe = (recipe) => {
+export const renderFullRecipe = (recipe, isLiked) => {
+    let like;
+    if(isLiked) like = 'heart';
+    else like = 'heart-empty';
+    
     const markup = `
                 <div class="box">
                     <div class="full-recipe-photo"><img src="${recipe.image}" alt="${recipe.title}"></div>
                     <h4 class="full-recipe-header">${recipe.title}</h4>
-                    <ion-icon name="heart-empty" class="full-recipe-likes"></ion-icon>
+                    <ion-icon name="${like}" class="full-recipe-likes"></ion-icon>
                 </div>
 
                 <div class="full-recipe-details">

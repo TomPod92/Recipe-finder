@@ -20,7 +20,7 @@ export default class Likes {
     }
     
     checkIfLiked(id) {
-        return this.likes.includes(id);
+        return this.likes.findIndex(current => current.id === id) !== -1;
     }    
     
 }
