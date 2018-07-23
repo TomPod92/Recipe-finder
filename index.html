@@ -16,13 +16,17 @@
 </head>
 
 <body>
-
 <!------------------------------------------SEARH PANEL----------------------------------------->
     <div class="container" id="container">
+        <a href="#likes-gallery" class ="allLikedRecipes">
+            <ion-icon name="heart" class="heart"></ion-icon>
+            <p>My favourite <br> recipes</p>
+        </a>
+       
         <header class="header">
             <form class="form">
                 <input type="text" class="search-field" placeholder="Search for recipes">
-                <button class="button"><a href="#upper">Search<ion-icon name="search" class="icon"></ion-icon></a></button>
+                <button class="button">Search<ion-icon name="search" class="icon"></ion-icon></button>
             </form>
         </header>
         <p class="attribution">Powered By Food2Fork.com</p>
@@ -120,7 +124,7 @@
     </section>
     
 <!----------------------------------------- LIKES LIST  ------------------------------------->
-    <section class="likes-gallery">
+    <section class="likes-gallery" id="likes-gallery">
         <div class="likes-grid-container">
             <!--<div class="like-item"><h4>super awesome meal</h4><p>45<span>min</span></p></div>
             <div class="like-item"><h4>super awesome meal</h4><p>45<span>min</span></p></div>

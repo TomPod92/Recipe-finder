@@ -2,6 +2,7 @@ export const elements = {
     searchForm: document.querySelector('.form'), 
     searchInput: document.querySelector('.search-field'),
     searchResultContainer: document.querySelector('.upper'),
+    test: document.querySelector('.bottom'),
     searchResultList: document.querySelector('.grid-container'),
     likesList: document.querySelector('.likes-grid-container'),
     buttonContainer: document.querySelector('.button-container'),

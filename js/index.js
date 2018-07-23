@@ -8,6 +8,7 @@ import * as searchView from './views/searchView.js';
 import * as recipeView from './views/recipeView.js';
 import * as listView from './views/listView.js';
 import * as likesView from './views/likesView.js';
+import * as scrollView from './views/scrollView.js';
 import { elements, renderSpinner, clearSpinner } from './views/base.js';
 
 // ------- State of the whole app --------
@@ -21,23 +22,22 @@ state.likes = new Likes();
 const controlSearch = async () => {
     // Get the query from view
     const query = searchView.getInput();
-    
-    //console.log(query);
-    
+
     if(query) {
         // creat new search object and add it to state
         state.search = new Search(query);
         
-        // clear previous results and render spinner
+        // clear previous results, render spinner and scroll to next section
         searchView.clearInput();
         searchView.clearResults();
-        renderSpinner(elements.searchResultContainer);        
+        renderSpinner(elements.searchResultContainer); 
+        scrollView.scrollIt(elements.searchResultContainer);
         
         try {
             // search for recipes
             await state.search.getResults();
             console.log(state.search.result);
-
+            
             // render results on user interface
             clearSpinner();
             searchView.renderResults(state.search.result);
@@ -53,7 +53,7 @@ const controlSearch = async () => {
 // ------------ Event that happens after clicking on search button -----------
 elements.searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    controlSearch();
+    controlSearch();    
 });
 
 // ----------- Events for left and right buttons ----------------------
@@ -81,9 +81,11 @@ const controlRecipe = async (id) => {
         // creat new recipe object and add it to state
         state.recipe = new Recipe(recipeId);
         
-        // clear previous results and render spinner
+        // clear previous results, render spinner and scroll to next section
         recipeView.clearResults();
         renderSpinner(elements.fullRecipeContainer);
+        scrollView.scrollIt(elements.test);
+        
         
         try {
             // search for a recipe and standardize ingredients
@@ -195,6 +197,7 @@ elements.fullRecipeContainer.addEventListener('click', event => {
     }
 });
 
+
 const controlLike = () => {
     if(!state.likes) state.likes = new Likes();
     
@@ -216,6 +219,13 @@ const controlLike = () => {
         // Remove like from UI
         likesView.renderResults(state.likes.likes);
         console.log(state.likes);
+    }
+    
+     //if there are no liked recipes, hide "all liked recipes" button
+    if(state.likes.likes.length > 0) {
+        document.querySelector('.allLikedRecipes').classList.add("show");
+    }  else {
+        document.querySelector('.allLikedRecipes').classList.remove("show");
     }
 };
 
