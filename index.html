@@ -18,18 +18,18 @@
 <body>
 
 <!------------------------------------------SEARH PANEL----------------------------------------->
-    <div class="container">
+    <div class="container" id="container">
         <header class="header">
             <form class="form">
                 <input type="text" class="search-field" placeholder="Search for recipes">
-                <button class="button">Search<ion-icon name="search" class="icon"></ion-icon></button>
+                <button class="button"><a href="#upper">Search<ion-icon name="search" class="icon"></ion-icon></a></button>
             </form>
         </header>
         <p class="attribution">Powered By Food2Fork.com</p>
     </div>
 <!-----------------------------------RECIPE GALLERY---------------------------------------------->
     
-    <section class="upper">
+    <section class="upper" id="upper">
         <div class="grid-container">
             <!--<div class="item"><h4>super awesome meal</h4><p>45<span>min</span></p></div>
             <div class="item"><h4>super awesome meal</h4><p>45<span>min</span></p></div>
@@ -44,8 +44,8 @@
                 <p>45<span>min</span></p>
             </div>-->          
         </div>
-        <div class="up-down up-arrow"><ion-icon name="arrow-dropup"></ion-icon></div>
-        <div class="up-down down-arrow"><ion-icon name="arrow-dropdown"></ion-icon></div>
+        <div class="up-down up-arrow"><a href="#container"><ion-icon name="arrow-dropup"></ion-icon></a></div>
+        <div class="up-down down-arrow"><a href="#bottom"><ion-icon name="arrow-dropdown"></ion-icon></a></div>
         
         <div class="button-container"></div>
 <!--
@@ -56,8 +56,8 @@
     
 <!--------------------------------------FULL RECIPE ------------------------------------------>
 
-    <section class="bottom">
-        <ion-icon name="apps" class="go-back"></ion-icon>
+    <section class="bottom" id="bottom">
+        <a href="#upper"><ion-icon name="apps" class="go-back"></ion-icon></a>
         <div class="row">
             <div class="col span-1-of-2 left">
 <!--
@@ -133,7 +133,7 @@
             <div class="like-item"><h4>super awesome meal</h4><p>45<span>min</span></p></div>-->          
         </div>
         
-        <div class="likes-up-down likes-up-arrow"><ion-icon name="arrow-dropup"></ion-icon></div>
+        <div class="likes-up-down likes-up-arrow"><a href="#bottom"><ion-icon name="arrow-dropup"></ion-icon></a></div>
         
         <div class="likes-button-container"></div>
      <!--   <div class="likes-next likes-left-arrow"><ion-icon name="arrow-dropleft"></ion-icon></div>

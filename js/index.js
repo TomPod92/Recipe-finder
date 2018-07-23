@@ -8,7 +8,6 @@ import * as searchView from './views/searchView.js';
 import * as recipeView from './views/recipeView.js';
 import * as listView from './views/listView.js';
 import * as likesView from './views/likesView.js';
-import * as scrollView from './views/scrollView.js';
 import { elements, renderSpinner, clearSpinner } from './views/base.js';
 
 // ------- State of the whole app --------
@@ -28,7 +27,7 @@ const controlSearch = async () => {
     if(query) {
         // creat new search object and add it to state
         state.search = new Search(query);
-        scrollView.scroll('.upper', 1500);
+        
         // clear previous results and render spinner
         searchView.clearInput();
         searchView.clearResults();
@@ -55,8 +54,6 @@ const controlSearch = async () => {
 elements.searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     controlSearch();
-    
-    //scrollView.test();
 });
 
 // ----------- Events for left and right buttons ----------------------
@@ -248,23 +245,3 @@ elements.likesList.addEventListener('click', (event) => {
     controlRecipe(id);
 });
 
-
-//------------------------------------------------------------------
-// ------------------ SMOOTH SCROLL CONTROLLER ---------------------
-//------------------------------------------------------------------
-
-document.querySelector('.up-arrow').addEventListener('click', () => {
-    scrollView.scroll('.container', 1500);
-});
-
-document.querySelector('.down-arrow').addEventListener('click', () => {
-    scrollView.scroll('.likes-gallery', 1500); 
-});
-
-document.querySelector('.go-back').addEventListener('click', () => {
-    scrollView.scroll('.bottom', 1500);
-});
-
-document.querySelector('.likes-up-arrow').addEventListener('click', () => {
-    scrollView.scroll('.likes-gallery', 1500);
-});

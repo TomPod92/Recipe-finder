@@ -16,6 +16,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 html {
@@ -497,5 +498,9 @@ form {
     100% {transform: translate(-50%, -50%) rotate(360deg);}
 }
 
+a {
+    text-decoration: none;
+    color: #000000;
+}
 
 
