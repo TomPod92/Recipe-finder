@@ -31,8 +31,8 @@ html {
     position: fixed;
     display: none;
     flex-direction: column;
-    top: 1%;
-    left: 1%;
+    top: 2%;
+    left: 2%;
     color: #f1c40f;
     font-size: 200%;
     z-index: 1;
@@ -47,6 +47,7 @@ html {
     font-size: 35%;
     opacity: 0;
     transition: opacity 1s;
+    margin-left: 10px;
 }
 
 .allLikedRecipes:hover p {

@@ -40,15 +40,25 @@ const renderButtons = (page) => {
     
     if (page === 1) {
         // no left button
-        markup = creatButton(1, 'right');
-        
+        markup = creatButton(1, 'right');   
     } else if (page === 2) {
         // both buttons
         markup = `${creatButton(2, 'left')}${creatButton(2, 'right')}`;
-                    
     } else if (page === 3) {
+        // both buttons
+        markup = `${creatButton(3, 'left')}${creatButton(3, 'right')}`;         
+    } else if (page === 4) {
+        // both buttons
+        markup = `${creatButton(4, 'left')}${creatButton(4, 'right')}`;           
+    } else if (page === 5) {
+        // both buttons
+        markup = `${creatButton(5, 'left')}${creatButton(5, 'right')}`;       
+    } else if (page === 6) {
+        // both buttons
+        markup = `${creatButton(6, 'left')}${creatButton(6, 'right')}`;          
+    } else if (page === 7) {
         // no right button
-        markup = creatButton(3, 'left');        
+        markup = creatButton(6, 'left');          
     }
     
     elements.buttonContainer.insertAdjacentHTML('beforeend', markup);
@@ -60,6 +70,8 @@ export const removeButton = () => {
 
 // --------------render recipes in recipe gallery after a search button is clicked -----------
 export const renderResults = (recipes, page = 1, resultsPerPage = 9) => { 
+    if(window.innerWidth < 601) resultsPerPage = 4;
+    
     const start = (page - 1) * resultsPerPage;
     const end = page * resultsPerPage;
     recipes.slice(start, end).forEach(renderRecipe);

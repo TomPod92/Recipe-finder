@@ -10,6 +10,8 @@ import * as listView from './views/listView.js';
 import * as likesView from './views/likesView.js';
 import * as scrollView from './views/scrollView.js';
 import { elements, renderSpinner, clearSpinner } from './views/base.js';
+import html2canvas from 'html2canvas';
+import jspdf from 'jspdf';
 
 // ------- State of the whole app --------
 const state = {};
@@ -255,3 +257,68 @@ elements.likesList.addEventListener('click', (event) => {
     controlRecipe(id);
 });
 
+
+//------------------------------------------------------------------
+// ----------------------- PRINT CONTROLLER ------------------------
+//------------------------------------------------------------------
+
+// !!!!!!!!!!!!!IT WORKS BUT CUTS HALFWAY!!!!!!!!!
+//document.querySelector('.print-button').addEventListener('click', ()=> {
+//    const element = document.getElementById("testing");
+//
+//    html2canvas(element).then(function(canvas) {
+//        // Export the canvas to its data URI representation
+//            const img = canvas.toDataURL("image/png");
+//            let doc = new jspdf();
+//                doc.addImage(img, 'JPEG', 0, 0);
+//                doc.save('test.pdf');
+//        // Open the image in a new window
+//        //window.open(base64image , "_blank");
+//    });
+//});
+
+// !!!!!!!!!!! IT WORKS !!!!!!!!!!!!!!
+document.querySelector('.print-button').addEventListener('click', () => {
+
+    makeNewPdf(state.list.items);
+});
+
+const makeNewPdf = (list) => {
+    let doc = new jspdf();
+    const fontSize = 16;
+    const offsetY = 4.797777777777778;
+    const lineHeight = 6.49111111111111;
+
+    doc.setFontSize(fontSize)
+
+    list.forEach((current, index) => {
+        doc.text(10, 10 + lineHeight * index + offsetY, `${current.count} ${current.unit} ${current.ingredient}`);
+    })
+    doc.save('shopping-list.pdf');
+};
+
+
+// !!!!!!!!!!!!!!!!!!!!! IT WORKS PERFECTLY !!!!!!!!!!!!!!!!
+//document.querySelector('.print-button').addEventListener('click', () => {
+//
+//    makeNewPdf();
+//});
+//
+//const makeNewPdf = () => {
+//    var pdf = new jspdf();
+//
+//    const fontSize = 16;
+//    const offsetY = 4.797777777777778;
+//    const lineHeight = 6.49111111111111;
+//
+//    pdf.setFontSize(fontSize);
+//
+//    pdf.text(10, 10 + lineHeight * 0 + offsetY, 'This is a template to make a jsPDF document.');
+//    pdf.text(10, 10 + lineHeight * 1 + offsetY, 'You can modify the PDF document by changing the code in script.js.');
+//    pdf.text(10, 10 + lineHeight * 2 + offsetY, 'You can use this template to quickly preview your jsPDF codes.');
+//    pdf.save('test.pdf');
+//    return pdf;
+//
+//};
+
+ 
