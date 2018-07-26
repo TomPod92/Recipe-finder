@@ -28,6 +28,8 @@ html {
     background-color: #fdf7e0;
 }
 
+body {overflow: hidden;}
+
 .allLikedRecipes {
     position: fixed;
     display:none;
