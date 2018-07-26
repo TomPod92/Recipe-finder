@@ -1,7 +1,5 @@
 import {elements} from './base.js';
 
-
-
 // --------------format recipe title in likes gallery section -----------
 const limitRecipeTitle = (title, limit = 17) => {
     
@@ -16,8 +14,7 @@ const limitRecipeTitle = (title, limit = 17) => {
         }, 0);
         
         return `${newTitle.join(' ')} ...`;
-    } 
-    
+    }    
     return title;
 };
 
@@ -27,17 +24,27 @@ const creatButton = (page, side) =>`<div class="likes-next ${side}-arrow" id="${
 const renderButtons = (page) => {
     let markup;
     
-    if (page === 1) {
+     if (page === 1) {
         // no left button
-        markup = creatButton(1, 'right');
-        
+        markup = creatButton(1, 'right');   
     } else if (page === 2) {
         // both buttons
         markup = `${creatButton(2, 'left')}${creatButton(2, 'right')}`;
-                    
     } else if (page === 3) {
+        // both buttons
+        markup = `${creatButton(3, 'left')}${creatButton(3, 'right')}`;         
+    } else if (page === 4) {
+        // both buttons
+        markup = `${creatButton(4, 'left')}${creatButton(4, 'right')}`;           
+    } else if (page === 5) {
+        // both buttons
+        markup = `${creatButton(5, 'left')}${creatButton(5, 'right')}`;       
+    } else if (page === 6) {
+        // both buttons
+        markup = `${creatButton(6, 'left')}${creatButton(6, 'right')}`;          
+    } else if (page === 7) {
         // no right button
-        markup = creatButton(3, 'left');        
+        markup = creatButton(6, 'left');          
     }
     
     elements.likeButtonContainer.insertAdjacentHTML('beforeend', markup);
@@ -49,7 +56,9 @@ export const removeButton = () => {
 
 // --------------render like in likes gallery after a like button is clicked -----------
 export const renderResults = (likes, page = 1, resultsPerPage = 9) => { 
-    console.log(likes);
+    //console.log(likes);
+    if(window.innerWidth < 601) resultsPerPage = 4;
+    if(window.innerWidth < 401) resultsPerPage = 3;
     elements.likesList.innerHTML = '';
     const start = (page - 1) * resultsPerPage;
     const end = page * resultsPerPage;

@@ -4,5 +4,4 @@ export const scrollIt = (element) => {
     'left': 0,
     'top': element.offsetTop
   });
-    console.log(element.offsetTop);
 }

@@ -1,5 +1,7 @@
 @media only screen and (max-width: 900px) {
-    .item h4 {font-size: 70%;}
+    .item h4 {
+        font-size: 70%;
+    }
 }
 
 @media only screen and (max-width: 804px) {
@@ -29,8 +31,10 @@
     .full-recipe-likes {
         left: 10%;
     }
-    
-    .full-recipe-header {font-size: 80%;}
+
+    .full-recipe-header {
+        font-size: 80%;
+    }
 }
 
 
@@ -42,16 +46,16 @@
     .left {
         margin: 50px 0;
     }
-    
-     .button-cart {
+
+    .button-cart {
         float: left;
         width: 40%;
     }
     .button-cook {
         float: right;
-        width: 40%; 
+        width: 40%;
     }
-    
+
     .go-back {
         top: 5%;
         left: 47%;
@@ -62,20 +66,24 @@
 }
 
 @media only screen and (max-width: 600px) {
-    
-    .allLikedRecipes {flex-direction:row}
-    
-    .full-recipe-photo {width: 70%;}
+
+    .allLikedRecipes {
+        flex-direction: row
+    }
+
+    .full-recipe-photo {
+        width: 70%;
+    }
     /*    .right {display: none;}*/
     .full-recipe-header {
         font-size: 100%;
     }
-    
+
     .full-recipe-likes {
         top: 5%;
         left: 17%;
     }
-    
+
     .go-back {
         top: 12%;
         left: 87%;
@@ -94,7 +102,8 @@
         transform: none;
     }
 
-    .grid-container {
+    .grid-container,
+    .likes-grid-container {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         grid-gap: 10px;
@@ -111,20 +120,34 @@
         display: none;
     }
 
-    .button-cart {display: none;}
+    .button-cart {
+        display: none;
+    }
 }
 
 
 
 @media only screen and (max-width: 400px) {
 
- .grid-container {
-     grid-template-columns: 1fr;
-     grid-template-rows: 1fr
+    .grid-container,
+    .likes-grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .next {
+        top: 48%;
+        font-size: 350%;
     }
     
-    .next {
-        top: 40%;
-        font-size: 250%;
+    .left-arrow {
+        left: -8%;
+    }
+    .right-arrow {
+        right: -5%;
+    }
+    
+    .likes-up-down {
+        left: 40%;
     }
 }

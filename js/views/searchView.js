@@ -71,7 +71,8 @@ export const removeButton = () => {
 // --------------render recipes in recipe gallery after a search button is clicked -----------
 export const renderResults = (recipes, page = 1, resultsPerPage = 9) => { 
     if(window.innerWidth < 601) resultsPerPage = 4;
-    
+    if(window.innerWidth < 401) resultsPerPage = 3;
+
     const start = (page - 1) * resultsPerPage;
     const end = page * resultsPerPage;
     recipes.slice(start, end).forEach(renderRecipe);

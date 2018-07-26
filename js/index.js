@@ -16,8 +16,22 @@ import jspdf from 'jspdf';
 // ------- State of the whole app --------
 const state = {};
 
-window.state = state;
-state.likes = new Likes();
+//window.state = state;
+
+
+// Restore my likes when the page loads
+window.addEventListener('load', ()=> {
+    state.likes = new Likes();
+    state.likes.readStorage();
+ 
+    state.likes.likes.forEach(current => likesView.renderResults(state.likes.likes));
+    
+    if(state.likes.likes.length) {
+        document.querySelector('.allLikedRecipes').classList.add("show");
+    }  else {
+        document.querySelector('.allLikedRecipes').classList.remove("show");
+    };
+});
 //------------------------------------------------------------------
 // ------------------- SEARCH FORM CONTROLLER ----------------------
 //------------------------------------------------------------------
@@ -38,7 +52,7 @@ const controlSearch = async () => {
         try {
             // search for recipes
             await state.search.getResults();
-            console.log(state.search.result);
+            //console.log(state.search.result);
             
             // render results on user interface
             clearSpinner();
@@ -92,14 +106,13 @@ const controlRecipe = async (id) => {
         try {
             // search for a recipe and standardize ingredients
             await state.recipe.getRecipe();
-            console.log(state.recipe.ingredients);
+            //console.log(state.recipe.ingredients);
             state.recipe.standardizeIngredients();
             state.recipe.calcTime();
             state.recipe.calcServings();
         
             // render results on user interface
-            console.log(state.recipe);
-            
+            //console.log(state.recipe);
             clearSpinner();
             recipeView.renderFullRecipe(state.recipe, state.likes.checkIfLiked(recipeId));
             
@@ -116,10 +129,10 @@ elements.searchResultList.addEventListener('click', (event) => {
     
     if (event.target.className){
         id = event.target.dataset.recipeid;
-        console.log(id);
+        //console.log(id);
     } else {
         id = event.target.parentNode.dataset.recipeid;
-        console.log(id);
+        //console.log(id);
     }
 
     controlRecipe(id);
@@ -193,8 +206,7 @@ elements.fullRecipeContainer.addEventListener('click', event => {
     
     if (event.target.matches('.full-recipe-likes, .full-recipe-likes *')){
         id = event.target.dataset.recipeid;
-        console.log('it works');
-        console.log(event.target);
+        //console.log(event.target);
         controlLike();
     }
 });
@@ -212,7 +224,7 @@ const controlLike = () => {
         likesView.toggleLikeButton(true);
         // Add like to UI
         likesView.renderResults(state.likes.likes);
-        console.log(state.likes);
+        //console.log(state.likes);
     } else {
         // Remove like from the state
         state.likes.deleteLike(currentID);
@@ -220,7 +232,7 @@ const controlLike = () => {
         likesView.toggleLikeButton(false);
         // Remove like from UI
         likesView.renderResults(state.likes.likes);
-        console.log(state.likes);
+        //console.log(state.likes);
     }
     
      //if there are no liked recipes, hide "all liked recipes" button
@@ -248,38 +260,20 @@ elements.likesList.addEventListener('click', (event) => {
     
     if (event.target.className){
         id = event.target.dataset.recipeid;
-        console.log(id);
+        //console.log(id);
     } else {
         id = event.target.parentNode.dataset.recipeid;
-        console.log(id);
+        //console.log(id);
     }
 
     controlRecipe(id);
 });
 
-
 //------------------------------------------------------------------
 // ----------------------- PRINT CONTROLLER ------------------------
 //------------------------------------------------------------------
 
-// !!!!!!!!!!!!!IT WORKS BUT CUTS HALFWAY!!!!!!!!!
-//document.querySelector('.print-button').addEventListener('click', ()=> {
-//    const element = document.getElementById("testing");
-//
-//    html2canvas(element).then(function(canvas) {
-//        // Export the canvas to its data URI representation
-//            const img = canvas.toDataURL("image/png");
-//            let doc = new jspdf();
-//                doc.addImage(img, 'JPEG', 0, 0);
-//                doc.save('test.pdf');
-//        // Open the image in a new window
-//        //window.open(base64image , "_blank");
-//    });
-//});
-
-// !!!!!!!!!!! IT WORKS !!!!!!!!!!!!!!
 document.querySelector('.print-button').addEventListener('click', () => {
-
     makeNewPdf(state.list.items);
 });
 
@@ -296,29 +290,3 @@ const makeNewPdf = (list) => {
     })
     doc.save('shopping-list.pdf');
 };
-
-
-// !!!!!!!!!!!!!!!!!!!!! IT WORKS PERFECTLY !!!!!!!!!!!!!!!!
-//document.querySelector('.print-button').addEventListener('click', () => {
-//
-//    makeNewPdf();
-//});
-//
-//const makeNewPdf = () => {
-//    var pdf = new jspdf();
-//
-//    const fontSize = 16;
-//    const offsetY = 4.797777777777778;
-//    const lineHeight = 6.49111111111111;
-//
-//    pdf.setFontSize(fontSize);
-//
-//    pdf.text(10, 10 + lineHeight * 0 + offsetY, 'This is a template to make a jsPDF document.');
-//    pdf.text(10, 10 + lineHeight * 1 + offsetY, 'You can modify the PDF document by changing the code in script.js.');
-//    pdf.text(10, 10 + lineHeight * 2 + offsetY, 'You can use this template to quickly preview your jsPDF codes.');
-//    pdf.save('test.pdf');
-//    return pdf;
-//
-//};
-
- 

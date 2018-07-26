@@ -12,7 +12,6 @@ export default class List {
             unit: unit,
             ingredient: ingredient
         }
-        console.log('it works');
         this.items.push(item);
         return item;
     }
