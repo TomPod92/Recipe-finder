@@ -117,8 +117,9 @@
     }
 
     .up-down {
-        display: none;
+        left: 42%;
     }
+
 
     .button-cart {
         display: none;
@@ -139,14 +140,14 @@
         top: 48%;
         font-size: 350%;
     }
-    
+
     .left-arrow {
         left: -8%;
     }
     .right-arrow {
         right: -5%;
     }
-    
+
     .likes-up-down {
         left: 40%;
     }
